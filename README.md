@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+# Dash FE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository holds the front end code for Dash. Dash is an online e-commerce web application.
+
+To clone this project, you can run the following comands in your terminal:
+
+`git clone git@github.com:JenThomasJames/dash-fe.git`
+`cd das-fe`
 
 ## Available Scripts
 
