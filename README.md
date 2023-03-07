@@ -5,7 +5,7 @@ This repository holds the front end code for Dash. Dash is an online e-commerce 
 To clone this project, you can run the following comands in your terminal:
 
 `git clone git@github.com:JenThomasJames/dash-fe.git`
-`cd das-fe`
+`cd dash-fe`
 
 ## Available Scripts
 
