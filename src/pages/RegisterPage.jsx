@@ -82,7 +82,7 @@ const RegisterPage = () => {
     };
     try {
       await createUser(newUser);
-      navigate("/login");
+      navigateHandler("/login");
     } catch (error) {
       setShowToast(true);
       console.log(error.message);
@@ -102,6 +102,11 @@ const RegisterPage = () => {
       createNewUser();
     }
   };
+
+  const navigateHandler = (to) => {
+    navigate(to);
+  };
+
   return (
     <Page>
       <BackdropSpinner isLoading={isLoading} />
@@ -180,6 +185,17 @@ const RegisterPage = () => {
           )}
           <AppButton type="submit">Register</AppButton>
         </form>
+        <div className="flex items-center">
+          <p>Already have an account? Let's </p>{" "}
+          <AppButton
+            onClick={() => {
+              navigateHandler("/login");
+            }}
+            variant="text"
+          >
+            Login
+          </AppButton>
+        </div>
       </div>
       <div className="flex-1 bg-purple-500 flex flex-col justify-center items-center">
         <div className="flex flex-col gap-2">
