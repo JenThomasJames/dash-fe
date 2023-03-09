@@ -9,10 +9,15 @@ import { isEmpty } from "../utils/validator";
 import Page from "../components/Page";
 import AppButton from "../components/AppButton";
 import Toast from "../components/Toast";
+import { useNavigate } from "react-router-dom";
+import BackdropSpinner from "../components/spinner/BackdropSpinner";
 
 const RegisterPage = () => {
   const [passwordError, setPasswordError] = useState("");
   const [showToast, setShowToast] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
   const {
     enteredValue: enteredFirstname,
     errorText: firstnameErrorText,
@@ -65,6 +70,7 @@ const RegisterPage = () => {
   };
 
   const createNewUser = async () => {
+    setIsLoading(true);
     const newUser = {
       email: enteredEmail,
       username: enteredFirstname + " " + enteredLastname,
@@ -76,9 +82,12 @@ const RegisterPage = () => {
     };
     try {
       await createUser(newUser);
+      navigate("/login");
     } catch (error) {
       setShowToast(true);
       console.log(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -95,6 +104,7 @@ const RegisterPage = () => {
   };
   return (
     <Page>
+      <BackdropSpinner isLoading={isLoading} />
       <Toast open={showToast} setOpen={setShowToast}>
         Something went wrong
       </Toast>
