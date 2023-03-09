@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { TextField } from "@mui/material";
 
 import useInput from "../hooks/use-input";
@@ -9,13 +10,16 @@ import { isEmpty } from "../utils/validator";
 import Page from "../components/Page";
 import AppButton from "../components/AppButton";
 import Toast from "../components/Toast";
-import { useNavigate } from "react-router-dom";
 import BackdropSpinner from "../components/spinner/BackdropSpinner";
 
 const RegisterPage = () => {
   const [passwordError, setPasswordError] = useState("");
-  const [showToast, setShowToast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [toast, setToast] = useState({
+    show: false,
+    message: "",
+    severity: "error",
+  });
 
   const navigate = useNavigate();
   const {
@@ -84,8 +88,11 @@ const RegisterPage = () => {
       await createUser(newUser);
       navigateHandler("/login");
     } catch (error) {
-      setShowToast(true);
-      console.log(error.message);
+      setToast({
+        show: true,
+        message: "Internal Server Error",
+        severity: "error",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -110,8 +117,8 @@ const RegisterPage = () => {
   return (
     <Page>
       <BackdropSpinner isLoading={isLoading} />
-      <Toast open={showToast} setOpen={setShowToast}>
-        Something went wrong
+      <Toast open={toast.show} setOpen={setToast}>
+        {toast.message}
       </Toast>
       <div className="flex-1 flex flex-col gap-5 justify-center items-center">
         <h1 className="font-semibold text-3xl text-slate-500">
