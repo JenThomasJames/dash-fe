@@ -48,6 +48,7 @@ const LoginPage = () => {
     };
     try {
       const response = await authenticateUser(credentials);
+      console.log(response.data.token);
       setToast({
         show: true,
         message: "Successfully authenticated",
