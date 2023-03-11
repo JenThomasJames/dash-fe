@@ -48,21 +48,22 @@ const LoginPage = () => {
     };
     try {
       const response = await authenticateUser(credentials);
-      console.log(response.data.token);
+      localStorage.setItem("token", response.data.token);
       setToast({
         show: true,
         message: "Successfully authenticated",
         severity: "success",
       });
+      navigate("/home");
     } catch (error) {
-      if (error.response.status === 500) {
+      if (error.response?.status === 500) {
         setToast({
           show: true,
           message: "Internal Server Error",
           severity: "error",
         });
       }
-      if (error.response.status === 401) {
+      if (error.response?.status === 401) {
         setToast({
           show: true,
           message: "Invalid credentials",
