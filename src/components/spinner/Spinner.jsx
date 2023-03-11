@@ -3,13 +3,13 @@ import styles from "./Spinner.module.css";
 
 const Spinner = () => {
   return (
-    <div class={styles.skChase}>
-      <div class={styles.skChaseDot}></div>
-      <div class={styles.skChaseDot}></div>
-      <div class={styles.skChaseDot}></div>
-      <div class={styles.skChaseDot}></div>
-      <div class={styles.skChaseDot}></div>
-      <div class={styles.skChaseDot}></div>
+    <div className={styles.skChase}>
+      <div className={styles.skChaseDot}></div>
+      <div className={styles.skChaseDot}></div>
+      <div className={styles.skChaseDot}></div>
+      <div className={styles.skChaseDot}></div>
+      <div className={styles.skChaseDot}></div>
+      <div className={styles.skChaseDot}></div>
     </div>
   );
 };
