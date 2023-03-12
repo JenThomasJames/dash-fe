@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const ROOT_URL = "https://fakestoreapi.com";
-// const PRODUCTS = "/products";
+const PRODUCTS = "/products";
 // const CART = "/carts";
 const USERS = "/users";
 const AUTH = "/auth/login";
@@ -13,4 +13,12 @@ export const createUser = (user) => {
 
 export const authenticateUser = (credentials) => {
   return axios.post(ROOT_URL + AUTH, credentials);
+};
+
+export const getAllCategories = () => {
+  return axios.get(ROOT_URL + PRODUCTS + "/categories");
+};
+
+export const getAllProducts = () => {
+  return axios.get(ROOT_URL + PRODUCTS);
 };

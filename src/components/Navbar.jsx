@@ -11,8 +11,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="min-w-full p-7 flex justify-between items-center">
-      <div className="flex flex-auto items-center gap-2">
+    <nav className="min-w-full py-7 flex justify-between items-center">
+      <div className="flex flex-1 items-center gap-2">
         <img width="60" src={Logo} alt="logo" />
         <h1 className="text-xl text-purple-500 font-medium">Dash.io</h1>
       </div>
