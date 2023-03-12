@@ -1,8 +1,27 @@
-import React from "react";
+import { useState } from "react";
 import { Card, CardContent, CardActions, TextField } from "@mui/material";
 import AppButton from "./AppButton";
+import { useCart } from "../context/CartContext";
 
 const ProductCard = ({ product }) => {
+  const [quantity, setQuantity] = useState(1);
+  const { addToCart, cartItems, updateQuantity } = useCart();
+
+  const quantityChangeHandler = (event) => {
+    setQuantity(event.target.value);
+  };
+
+  const addToCartHandler = () => {
+    const indexOfItemInCart = cartItems.findIndex(
+      (item) => item.id === product.id
+    );
+    if (indexOfItemInCart !== -1) {
+      updateQuantity(product, parseInt(quantity));
+    } else {
+      addToCart({ ...product, quantity: parseInt(quantity) });
+    }
+  };
+
   return (
     <Card
       sx={{
@@ -30,6 +49,8 @@ const ProductCard = ({ product }) => {
         <CardActions>
           <div className="flex items-center justify-between min-w-full">
             <TextField
+              value={quantity}
+              onChange={quantityChangeHandler}
               id="outlined-number"
               label="Quantity"
               type="number"
@@ -46,7 +67,7 @@ const ProductCard = ({ product }) => {
                 maxLength: 2,
               }}
             />
-            <AppButton>Add to Cart</AppButton>
+            <AppButton onClick={addToCartHandler}>Add to Cart</AppButton>
           </div>
         </CardActions>
       </div>
