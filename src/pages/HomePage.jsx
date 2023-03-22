@@ -54,12 +54,6 @@ const HomePage = () => {
         </div>
         <img className="max-w-sm" src={ShoeImage} alt="shoe" />
       </div>
-      {/* Categories */}
-      <div className="flex justify-evenly">
-        {categories.map((category, index) => (
-          <Chip label={category} onClick={() => {}} key={index} />
-        ))}
-      </div>
       <h1 className="text-xl font-semibold">Top Products</h1>
       <div className="flex justify-center flex-wrap">
         {products.map((product) => (
