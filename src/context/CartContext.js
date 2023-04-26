@@ -17,6 +17,7 @@ function CartProvider({ children }) {
     const cart = cartItems;
     const index = cart.findIndex((product) => product.id === item.id);
     cart[index].quantity += quantity;
+    if (cart[index].quantity < 1) removeFromCart(item.id);
     setTotal((currentTotal) => {
       return currentTotal + item.price * quantity * 81;
     });
