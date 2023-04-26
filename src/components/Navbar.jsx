@@ -1,4 +1,3 @@
-import React from "react";
 import Logo from "../logo.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 
@@ -19,6 +18,9 @@ const Navbar = () => {
       <ul className="flex justify-end gap-7 flex-1">
         <li className="text-slate-400 hover:text-purple-500 text-xl font-regular">
           <NavLink to="/home">Home</NavLink>
+        </li>
+        <li className="text-slate-400 hover:text-purple-500 text-xl font-regular">
+          <NavLink to="/cart">Cart</NavLink>
         </li>
         <li className="text-slate-400 hover:text-purple-500 text-xl font-regular">
           <button onClick={handleLogout}>Logout</button>

@@ -3,11 +3,9 @@ import AppButton from "../components/AppButton";
 import ShoeImage from "../assets/shoe.png";
 import BackdropSpinner from "../components/spinner/BackdropSpinner";
 import Toast from "../components/Toast";
-import { Chip } from "@mui/material";
-import { getAllCategories, getAllProducts } from "../utils/api-calls";
+import { getAllProducts } from "../utils/api-calls";
 import ProductCard from "../components/ProductCard";
 const HomePage = () => {
-  const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [toast, setToast] = useState({
@@ -16,11 +14,9 @@ const HomePage = () => {
     message: "",
   });
   useEffect(() => {
-    const fetchAllCategoriesAndProducts = async () => {
+    const fetchAllProducts = async () => {
       setIsLoading(true);
       try {
-        const categoriesResponse = await getAllCategories();
-        setCategories(categoriesResponse.data);
         const productsResponse = await getAllProducts();
         setProducts(productsResponse.data);
       } catch (error) {
@@ -34,7 +30,7 @@ const HomePage = () => {
         setIsLoading(false);
       }
     };
-    fetchAllCategoriesAndProducts();
+    fetchAllProducts();
   }, []);
   return (
     <div className="flex flex-col gap-5">

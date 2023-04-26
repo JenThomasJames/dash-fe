@@ -9,7 +9,7 @@ function CartProvider({ children }) {
   function addToCart(item) {
     setCartItems([...cartItems, item]);
     setTotal((currentTotal) => {
-      return currentTotal + item.price * item.quantity;
+      return currentTotal + item.price * item.quantity * 81;
     });
   }
 
@@ -18,7 +18,7 @@ function CartProvider({ children }) {
     const index = cart.findIndex((product) => product.id === item.id);
     cart[index].quantity += quantity;
     setTotal((currentTotal) => {
-      return currentTotal + item.price * quantity;
+      return currentTotal + item.price * quantity * 81;
     });
 
     setCartItems(cart);

@@ -4,7 +4,7 @@ import AppButton from "./AppButton";
 import { useCart } from "../context/CartContext";
 
 const ProductCard = ({ product }) => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const { addToCart, cartItems, updateQuantity } = useCart();
 
   const quantityChangeHandler = (event) => {
@@ -34,6 +34,11 @@ const ProductCard = ({ product }) => {
       }}
     >
       <div className="flex flex-col">
+        <img
+          className="rounded-md object-fit"
+          src="https://picsum.photos/id/119/200"
+          alt=""
+        />
         <CardContent>
           <div className="flex justify-between">
             <h1 className="text-md font-bold text-slate-700">

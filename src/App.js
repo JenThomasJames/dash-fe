@@ -8,6 +8,7 @@ import "@fontsource/roboto/700.css";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
+import CartPage from "./pages/CartPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const theme = createTheme({
@@ -36,6 +37,14 @@ function App() {
           element={
             <ProtectedRoute>
               <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute>
+              <CartPage />
             </ProtectedRoute>
           }
         />
