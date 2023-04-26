@@ -5,19 +5,18 @@ import BackdropSpinner from "../components/spinner/BackdropSpinner";
 import Toast from "../components/Toast";
 import { useCart } from "../context/CartContext";
 import EmptyCart from "../assets/happy.svg";
-import ProductCard from "../components/ProductCard";
 import OrderSummary from "../components/OrderSummary";
 
+const shippingCharge = 40;
+const discountPercentage = 20;
+
 const CartPage = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [toast, setToast] = useState({
     show: false,
     severity: "error",
     message: "",
   });
   const { cartItems, total } = useCart();
-  let shippingCharge = 40;
-  let discountPercentage = 20;
   let discount = (total * (discountPercentage / 100.0)).toFixed(2);
   let grandTotal = total - discount + shippingCharge;
   let roundOff = "0." + grandTotal.toString().split(".")[1];
@@ -33,7 +32,6 @@ const CartPage = () => {
 
   return (
     <div className="flex flex-col gap-5">
-      <BackdropSpinner isLoading={isLoading} />
       <Toast open={toast.show} setOpen={setToast} severity={toast.severity}>
         {toast.message}
       </Toast>
