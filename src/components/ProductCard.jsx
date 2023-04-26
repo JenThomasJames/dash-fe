@@ -36,7 +36,7 @@ const ProductCard = ({ product }) => {
       <div className="flex flex-col">
         <img
           className="rounded-md object-fit"
-          src="https://picsum.photos/id/119/200"
+          src={"https://placehold.co/600x400?text=" + product.title + ""}
           alt=""
         />
         <CardContent>
