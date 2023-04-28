@@ -1,11 +1,11 @@
 import { Divider } from "@mui/material";
 import { useState } from "react";
 import PriceBreakup from "../components/PriceBreakup";
-import BackdropSpinner from "../components/spinner/BackdropSpinner";
 import Toast from "../components/Toast";
 import { useCart } from "../context/CartContext";
 import EmptyCart from "../assets/happy.svg";
 import OrderSummary from "../components/OrderSummary";
+import AppButton from "../components/AppButton";
 
 const shippingCharge = 40;
 const discountPercentage = 20;
@@ -32,10 +32,13 @@ const CartPage = () => {
 
   return (
     <div className="flex flex-col gap-5">
+      <div className="flex min-w-full justify-end">
+        <AppButton>Proceed to Checkout</AppButton>
+      </div>
       <Toast open={toast.show} setOpen={setToast} severity={toast.severity}>
         {toast.message}
       </Toast>
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex flex-row-reverse justify-around gap-4">
         <div className="flex flex-col px-5 py-3 border border-slate-100 rounded-md w-1/3 gap-9">
           <h1 className="text-slate-500 font-semibold text-4xl">
             Cart Summary
@@ -60,13 +63,13 @@ const CartPage = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col px-5 py-3 border border-slate-100 rounded-md w-1/3 gap-9">
+        <div className="flex flex-col items-center px-5 py-3 border border-slate-100 rounded-md w-1/3 gap-9">
           <h1 className="text-slate-500 font-semibold text-4xl">
             Order Summary
           </h1>
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-2">
             {cartItems.map((item) => (
-              <OrderSummary />
+              <OrderSummary product={item} key={item.id} />
             ))}
           </div>
         </div>
