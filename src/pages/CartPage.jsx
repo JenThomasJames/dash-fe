@@ -6,6 +6,7 @@ import { useCart } from "../context/CartContext";
 import EmptyCart from "../assets/happy.svg";
 import OrderSummary from "../components/OrderSummary";
 import AppButton from "../components/AppButton";
+import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 
 const shippingCharge = 40;
 const discountPercentage = 20;
@@ -21,6 +22,10 @@ const CartPage = () => {
   let grandTotal = total - discount + shippingCharge;
   let roundOff = "0." + grandTotal.toString().split(".")[1];
 
+  const checkoutHandler = () => {
+    console.log("Checking out....");
+  };
+
   if (cartItems.length === 0) {
     return (
       <div className="flex gap-5 items-center flex-col min-w-full justify-center">
@@ -33,7 +38,9 @@ const CartPage = () => {
   return (
     <div className="flex flex-col gap-5">
       <div className="flex min-w-full justify-end">
-        <AppButton>Proceed to Checkout</AppButton>
+        <AppButton icon={<ShoppingCartRoundedIcon />} onClick={checkoutHandler}>
+          Proceed to Checkout
+        </AppButton>
       </div>
       <Toast open={toast.show} setOpen={setToast} severity={toast.severity}>
         {toast.message}
