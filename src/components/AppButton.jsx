@@ -5,6 +5,7 @@ const AppButton = ({
   variant = "contained",
   type = "button",
   onClick,
+  icon,
 }) => {
   return (
     <Button
@@ -13,6 +14,7 @@ const AppButton = ({
       variant={variant}
       disableElevation
       type={type}
+      startIcon={icon ? icon : null}
     >
       {children}
     </Button>
